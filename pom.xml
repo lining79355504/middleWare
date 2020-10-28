@@ -16,7 +16,7 @@
     </modules>
 
     <properties>
-        <distributionGenerator.version>1.0.0-SNAPSHOT</distributionGenerator.version>
+        <distributionIdGenerator.version>1.0.0-SNAPSHOT</distributionIdGenerator.version>
         <jetcd.version>0.5.4</jetcd.version>
     </properties>
 

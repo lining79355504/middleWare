@@ -16,6 +16,14 @@
 
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>distributeIdGenerator</artifactId>
+            <version>${distributionIdGenerator.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
