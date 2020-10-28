@@ -12,7 +12,22 @@
         <module>dataStream</module>
         <module>distributeIdGenerator</module>
         <module>distributeConfig</module>
+        <module>spring</module>
     </modules>
 
+    <properties>
+        <distributionGenerator.version>1.0.0-SNAPSHOT</distributionGenerator.version>
+        <jetcd.version>0.5.4</jetcd.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>3.8.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
