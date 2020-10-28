@@ -20,6 +20,7 @@
     <properties>
         <distributionIdGenerator.version>1.0.0-SNAPSHOT</distributionIdGenerator.version>
         <jetcd.version>0.5.4</jetcd.version>
+        <spring.version>5.2.9.RELEASE</spring.version>
     </properties>
 
     <dependencyManagement>
