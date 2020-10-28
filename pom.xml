@@ -11,8 +11,10 @@
     <modules>
         <module>dataStream</module>
         <module>distributeIdGenerator</module>
+        <module>distributeIdGeneratorClient</module>
         <module>distributeConfig</module>
         <module>spring</module>
+        <module>spring-boot</module>
     </modules>
 
     <properties>

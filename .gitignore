@@ -34,3 +34,4 @@ middleWare.iml
 target/*
 */target/*
 */target
+*.iml
