@@ -18,11 +18,11 @@ import java.util.Properties;
 @Component
 public class BibleConfigureCenterService extends ConfigureCenterService {
 
-    private static final String UAT_TOKEN = "965e42068312c8ef0685e0d23de80808";
+    private static final String UAT_TOKEN = "XXll";
 
-    private static final String ONLINE_TOKEN = "cc67e01d8361a56f7cf2496a6fef0e20";
+    private static final String ONLINE_TOKEN = "XXll";
 
-    private static final String PRE_TOKEN = "75c435d44a424e594c132e06eb7793e3";
+    private static final String PRE_TOKEN = "XXll";
 
     private static final Logger logger = LoggerFactory.getLogger(BibleConfigureCenterService.class);
 
