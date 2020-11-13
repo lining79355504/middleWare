@@ -17,12 +17,11 @@
 
     <dependencies>
 
-
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>distributeIdGenerator</artifactId>
-            <version>${distributionIdGenerator.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.example</groupId>-->
+<!--            <artifactId>distributeIdGeneratorServer</artifactId>-->
+<!--            <version>1.0.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -36,11 +35,11 @@
             <version>4.3.2.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--            <version>1.2.3</version>-->
+<!--        </dependency>-->
         <!--<dependency>-->
         <!--<groupId>com.demo</groupId>-->
         <!--<artifactId>smartDAL</artifactId>-->
@@ -73,6 +72,8 @@
             <type>jar</type>
         </dependency>
 
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -104,7 +105,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.20</version>
         </dependency>
 
         <!-- dbcp连接池需要的jar包 -->
@@ -303,12 +303,12 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.25</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
+<!--            <version>1.7.25</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!-- Using version 1.0.1, versions higher require only jdk7 -->
         <dependency>
@@ -488,6 +488,12 @@
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
             <version>1.78</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>distributeIdGeneratorServer</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>test</scope>
         </dependency>
 
 

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mort.middle.ware.id.mapper.IdInfoMapper">
+  <resultMap id="BaseResultMap" type="com.mort.middle.ware.id.model.IdInfo">
+    <!--@mbg.generated-->
+    <!--@Table id_info-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="biz" jdbcType="VARCHAR" property="biz" />
+    <result column="certificate" jdbcType="VARCHAR" property="certificate" />
+    <result column="step" jdbcType="INTEGER" property="step" />
+    <result column="max" jdbcType="BIGINT" property="max" />
+    <result column="form" jdbcType="INTEGER" property="form" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, biz, certificate, step, `max`, form, add_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from id_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from id_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.id.model.IdInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into id_info (biz, certificate, step, 
+      `max`, form, add_time, 
+      update_time)
+    values (#{biz,jdbcType=VARCHAR}, #{certificate,jdbcType=VARCHAR}, #{step,jdbcType=INTEGER}, 
+      #{max,jdbcType=BIGINT}, #{form,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.id.model.IdInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into id_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="biz != null">
+        biz,
+      </if>
+      <if test="certificate != null">
+        certificate,
+      </if>
+      <if test="step != null">
+        step,
+      </if>
+      <if test="max != null">
+        `max`,
+      </if>
+      <if test="form != null">
+        form,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="biz != null">
+        #{biz,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=INTEGER},
+      </if>
+      <if test="max != null">
+        #{max,jdbcType=BIGINT},
+      </if>
+      <if test="form != null">
+        #{form,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mort.middle.ware.id.model.IdInfo">
+    <!--@mbg.generated-->
+    update id_info
+    <set>
+      <if test="biz != null">
+        biz = #{biz,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        step = #{step,jdbcType=INTEGER},
+      </if>
+      <if test="max != null">
+        `max` = #{max,jdbcType=BIGINT},
+      </if>
+      <if test="form != null">
+        form = #{form,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mort.middle.ware.id.model.IdInfo">
+    <!--@mbg.generated-->
+    update id_info
+    set biz = #{biz,jdbcType=VARCHAR},
+      certificate = #{certificate,jdbcType=VARCHAR},
+      step = #{step,jdbcType=INTEGER},
+      `max` = #{max,jdbcType=BIGINT},
+      form = #{form,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update id_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="biz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.biz,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="certificate = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.certificate,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="step = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.step,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`max` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.max,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="form = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.form,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="add_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.addTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into id_info
+    (biz, certificate, step, `max`, form, add_time, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.biz,jdbcType=VARCHAR}, #{item.certificate,jdbcType=VARCHAR}, #{item.step,jdbcType=INTEGER}, 
+        #{item.max,jdbcType=BIGINT}, #{item.form,jdbcType=INTEGER}, #{item.addTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.id.model.IdInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into id_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      biz,
+      certificate,
+      step,
+      `max`,
+      form,
+      add_time,
+      update_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{biz,jdbcType=VARCHAR},
+      #{certificate,jdbcType=VARCHAR},
+      #{step,jdbcType=INTEGER},
+      #{max,jdbcType=BIGINT},
+      #{form,jdbcType=INTEGER},
+      #{addTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      biz = #{biz,jdbcType=VARCHAR},
+      certificate = #{certificate,jdbcType=VARCHAR},
+      step = #{step,jdbcType=INTEGER},
+      `max` = #{max,jdbcType=BIGINT},
+      form = #{form,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.id.model.IdInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into id_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="biz != null">
+        biz,
+      </if>
+      <if test="certificate != null">
+        certificate,
+      </if>
+      <if test="step != null">
+        step,
+      </if>
+      <if test="max != null">
+        `max`,
+      </if>
+      <if test="form != null">
+        form,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="biz != null">
+        #{biz,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=INTEGER},
+      </if>
+      <if test="max != null">
+        #{max,jdbcType=BIGINT},
+      </if>
+      <if test="form != null">
+        #{form,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="biz != null">
+        biz = #{biz,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        step = #{step,jdbcType=INTEGER},
+      </if>
+      <if test="max != null">
+        `max` = #{max,jdbcType=BIGINT},
+      </if>
+      <if test="form != null">
+        form = #{form,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+<!--auto generated by MybatisCodeHelper on 2020-10-28-->
+  <select id="selectByBiz" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from id_info
+    where biz=#{biz,jdbcType=VARCHAR}
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-10-28-->
+  <update id="updateByBizAndForm">
+    update id_info
+    <set>
+      <if test="updated.id != null">
+        id = #{updated.id,jdbcType=INTEGER},
+      </if>
+      <if test="updated.biz != null">
+        biz = #{updated.biz,jdbcType=VARCHAR},
+      </if>
+      <if test="updated.certificate != null">
+        certificate = #{updated.certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="updated.step != null">
+        step = #{updated.step,jdbcType=INTEGER},
+      </if>
+      <if test="updated.max != null">
+        max = #{updated.max,jdbcType=BIGINT},
+      </if>
+      <if test="updated.form != null">
+        form = #{updated.form,jdbcType=BIGINT},
+      </if>
+      <if test="updated.addTime != null">
+        add_time = #{updated.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated.updateTime != null">
+        update_time = #{updated.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where biz=#{biz,jdbcType=VARCHAR} and form=#{form,jdbcType=BIGINT}
+  </update>
+</mapper>

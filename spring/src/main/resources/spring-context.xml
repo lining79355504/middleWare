@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:component-scan base-package="com.mort.*"/>
+
+    <!-- 配置数据源  根据 id="jdbcDataSource" ref 到mybatis jdbc 数据连接-->
+    <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>${database.driver}</value>
+        </property>
+        <property name="url">
+            <value>${database.url}?useUnicode=true&amp;characterEncoding=UTF-8</value>
+            <!--ams是我的数据库  -->
+        </property>
+        <property name="username">
+            <value>${database.user}</value>
+        </property>
+        <property name="password">
+            <value>${database.password}</value>
+        </property>
+    </bean>
+
+    <!-- MyBatis配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="jdbcDataSource" />
+        <property name="configLocation" value="classpath:conf/MyBatisConfiguration.xml" />
+        <property name="mapperLocations" value="classpath*:mapperxml/*Mapper.xml" />
+        <!--<property name="typeAliasesPackage" value="${mybatis.alias.basepackage}" />-->
+    </bean>
+
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mort.middle.ware.id.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+</beans>

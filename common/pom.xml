@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${common.version}</version>
 
     <dependencies>
         <dependency>
@@ -47,6 +47,20 @@
             <artifactId>log4j-core</artifactId>
             <version>2.11.0</version>
         </dependency>
-    </dependencies>
 
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+<!--            <scope>test</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.2.RELEASE</version>
+<!--            <scope>test</scope>-->
+        </dependency>
+
+    </dependencies>
 </project>

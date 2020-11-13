@@ -11,6 +11,7 @@ import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 import javax.annotation.Resource;
@@ -20,13 +21,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public abstract class AbstractConsumerService implements ConsumerService, InitializingBean {
+public abstract class AbstractConsumerService implements ConsumerService, InitializingBean , DisposableBean {
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractConsumerService.class);
 
     private int PARTITION_ID = 0;
 
     private long MILLIS = 10000;
+
+    private volatile boolean flag = true;
 
     @Resource
     private BibleConfigureCenterService bibleConfigureCenterService;
@@ -52,7 +55,7 @@ public abstract class AbstractConsumerService implements ConsumerService, Initia
                     consumer.assign(Arrays.asList(new TopicPartition(getTopic(), PARTITION_ID)));
                 }
 
-                while (true) {
+                while (flag) {
                     try {
                         ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(MILLIS));
                         for (ConsumerRecord<String, String> record : records) {
@@ -86,4 +89,8 @@ public abstract class AbstractConsumerService implements ConsumerService, Initia
         MILLIS = millis;
     }
 
+    @Override
+    public void destroy() throws Exception {
+        this.flag = false;
+    }
 }
