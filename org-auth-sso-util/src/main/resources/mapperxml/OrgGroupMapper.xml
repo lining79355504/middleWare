@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mort.middle.ware.org.mapper.OrgGroupMapper">
+  <resultMap id="BaseResultMap" type="com.mort.middle.ware.org.model.OrgGroup">
+    <!--@mbg.generated-->
+    <!--@Table org_group-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sale_type" jdbcType="TINYINT" property="saleType" />
+    <result column="leader" jdbcType="INTEGER" property="leader" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
+    <result column="sale_director_id" jdbcType="INTEGER" property="saleDirectorId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, sale_type, leader, `status`, is_deleted, ctime, mtime, sale_director_id, 
+    parent_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from org_group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from org_group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.org.model.OrgGroup" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org_group (`name`, sale_type, leader, 
+      `status`, is_deleted, ctime, 
+      mtime, sale_director_id, parent_id
+      )
+    values (#{name,jdbcType=VARCHAR}, #{saleType,jdbcType=TINYINT}, #{leader,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{mtime,jdbcType=TIMESTAMP}, #{saleDirectorId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.org.model.OrgGroup" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="saleType != null">
+        sale_type,
+      </if>
+      <if test="leader != null">
+        leader,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="mtime != null">
+        mtime,
+      </if>
+      <if test="saleDirectorId != null">
+        sale_director_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null">
+        #{saleType,jdbcType=TINYINT},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleDirectorId != null">
+        #{saleDirectorId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mort.middle.ware.org.model.OrgGroup">
+    <!--@mbg.generated-->
+    update org_group
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null">
+        sale_type = #{saleType,jdbcType=TINYINT},
+      </if>
+      <if test="leader != null">
+        leader = #{leader,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleDirectorId != null">
+        sale_director_id = #{saleDirectorId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mort.middle.ware.org.model.OrgGroup">
+    <!--@mbg.generated-->
+    update org_group
+    set `name` = #{name,jdbcType=VARCHAR},
+      sale_type = #{saleType,jdbcType=TINYINT},
+      leader = #{leader,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      sale_director_id = #{saleDirectorId,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update org_group
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="sale_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.saleType,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="leader = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.leader,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.isDeleted,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="ctime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.ctime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="mtime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.mtime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="sale_director_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.saleDirectorId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="parent_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.parentId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org_group
+    (`name`, sale_type, leader, `status`, is_deleted, ctime, mtime, sale_director_id, 
+      parent_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.name,jdbcType=VARCHAR}, #{item.saleType,jdbcType=TINYINT}, #{item.leader,jdbcType=INTEGER}, 
+        #{item.status,jdbcType=TINYINT}, #{item.isDeleted,jdbcType=TINYINT}, #{item.ctime,jdbcType=TIMESTAMP}, 
+        #{item.mtime,jdbcType=TIMESTAMP}, #{item.saleDirectorId,jdbcType=INTEGER}, #{item.parentId,jdbcType=INTEGER}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.org.model.OrgGroup" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      `name`,
+      sale_type,
+      leader,
+      `status`,
+      is_deleted,
+      ctime,
+      mtime,
+      sale_director_id,
+      parent_id,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{name,jdbcType=VARCHAR},
+      #{saleType,jdbcType=TINYINT},
+      #{leader,jdbcType=INTEGER},
+      #{status,jdbcType=TINYINT},
+      #{isDeleted,jdbcType=TINYINT},
+      #{ctime,jdbcType=TIMESTAMP},
+      #{mtime,jdbcType=TIMESTAMP},
+      #{saleDirectorId,jdbcType=INTEGER},
+      #{parentId,jdbcType=INTEGER},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      `name` = #{name,jdbcType=VARCHAR},
+      sale_type = #{saleType,jdbcType=TINYINT},
+      leader = #{leader,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      sale_director_id = #{saleDirectorId,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.mort.middle.ware.org.model.OrgGroup" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="saleType != null">
+        sale_type,
+      </if>
+      <if test="leader != null">
+        leader,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="mtime != null">
+        mtime,
+      </if>
+      <if test="saleDirectorId != null">
+        sale_director_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null">
+        #{saleType,jdbcType=TINYINT},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleDirectorId != null">
+        #{saleDirectorId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null">
+        sale_type = #{saleType,jdbcType=TINYINT},
+      </if>
+      <if test="leader != null">
+        leader = #{leader,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleDirectorId != null">
+        sale_director_id = #{saleDirectorId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+<!--auto generated by MybatisCodeHelper on 2020-11-17-->
+  <select id="selectAllByCtime" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from org_group
+    where ctime=#{ctime,jdbcType=TIMESTAMP}
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-11-17-->
+  <select id="selectByAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from org_group
+    <where>
+      <if test="id != null">
+        and id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        and `name`=#{name,jdbcType=VARCHAR}
+      </if>
+      <if test="saleType != null">
+        and sale_type=#{saleType,jdbcType=TINYINT}
+      </if>
+      <if test="leader != null">
+        and leader=#{leader,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        and `status`=#{status,jdbcType=TINYINT}
+      </if>
+      <if test="isDeleted != null">
+        and is_deleted=#{isDeleted,jdbcType=TINYINT}
+      </if>
+      <if test="ctime != null">
+        and ctime=#{ctime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="mtime != null">
+        and mtime=#{mtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="saleDirectorId != null">
+        and sale_director_id=#{saleDirectorId,jdbcType=INTEGER}
+      </if>
+      <if test="parentId != null">
+        and parent_id=#{parentId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-11-17-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from org_group limit #{limit,jdbcType=INTEGER}
+  </select>
+</mapper>

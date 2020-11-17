@@ -68,6 +68,8 @@ public abstract class AbstractConsumerService implements ConsumerService, Initia
                                 consumer.commitSync(commitInfo);
                             } catch (Throwable e) {
                                 transaction.setStatus(e);
+                                //防止其中一个异常，下个消息跳跃ack导致消息丢失。
+                                break;
                             } finally {
                                 transaction.complete();
                             }
