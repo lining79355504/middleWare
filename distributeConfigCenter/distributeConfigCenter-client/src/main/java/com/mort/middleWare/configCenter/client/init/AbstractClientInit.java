@@ -12,8 +12,8 @@ import java.util.Map;
  **/
 public abstract class AbstractClientInit {
 
-    abstract void clientStart();
-
     protected Map<String, Client> map = new HashMap<>();
+
+    abstract void clientStart();
 
 }

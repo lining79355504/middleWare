@@ -6,4 +6,9 @@ package com.mort.middleWare.configCenter.client.request;
  * @date 2020/11/26
  **/
 public interface Client {
+
+    void start();
+
+    void listen();
+
 }
