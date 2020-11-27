@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mort.middleWare.configCenter.server.mapper.ConfigEnterMapper">
+  <resultMap id="BaseResultMap" type="com.mort.middleWare.configCenter.server.entity.ConfigEnter">
+    <!--@mbg.generated-->
+    <!--@Table config_enter-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app" jdbcType="VARCHAR" property="app" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="LONGVARCHAR" property="value" />
+    <result column="valueType" jdbcType="VARCHAR" property="valuetype" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, app, `key`, `value`, valueType, add_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from config_enter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from config_enter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mort.middleWare.configCenter.server.entity.ConfigEnter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into config_enter (app, `key`, `value`, 
+      valueType, add_time, update_time
+      )
+    values (#{app,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=LONGVARCHAR}, 
+      #{valuetype,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mort.middleWare.configCenter.server.entity.ConfigEnter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into config_enter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="app != null">
+        app,
+      </if>
+      <if test="key != null">
+        `key`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="valuetype != null">
+        valueType,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="app != null">
+        #{app,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="valuetype != null">
+        #{valuetype,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mort.middleWare.configCenter.server.entity.ConfigEnter">
+    <!--@mbg.generated-->
+    update config_enter
+    <set>
+      <if test="app != null">
+        app = #{app,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        `key` = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="valuetype != null">
+        valueType = #{valuetype,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mort.middleWare.configCenter.server.entity.ConfigEnter">
+    <!--@mbg.generated-->
+    update config_enter
+    set app = #{app,jdbcType=VARCHAR},
+      `key` = #{key,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=LONGVARCHAR},
+      valueType = #{valuetype,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update config_enter
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="app = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.app,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`key` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.key,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`value` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.value,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="valueType = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.valuetype,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="add_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.addTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into config_enter
+    (app, `key`, `value`, valueType, add_time, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.app,jdbcType=VARCHAR}, #{item.key,jdbcType=VARCHAR}, #{item.value,jdbcType=LONGVARCHAR}, 
+        #{item.valuetype,jdbcType=VARCHAR}, #{item.addTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.mort.middleWare.configCenter.server.entity.ConfigEnter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into config_enter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      app,
+      `key`,
+      `value`,
+      valueType,
+      add_time,
+      update_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{app,jdbcType=VARCHAR},
+      #{key,jdbcType=VARCHAR},
+      #{value,jdbcType=LONGVARCHAR},
+      #{valuetype,jdbcType=VARCHAR},
+      #{addTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      app = #{app,jdbcType=VARCHAR},
+      `key` = #{key,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=LONGVARCHAR},
+      valueType = #{valuetype,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.mort.middleWare.configCenter.server.entity.ConfigEnter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into config_enter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="app != null">
+        app,
+      </if>
+      <if test="key != null">
+        `key`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="valuetype != null">
+        valueType,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="app != null">
+        #{app,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="valuetype != null">
+        #{valuetype,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="app != null">
+        app = #{app,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        `key` = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="valuetype != null">
+        valueType = #{valuetype,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

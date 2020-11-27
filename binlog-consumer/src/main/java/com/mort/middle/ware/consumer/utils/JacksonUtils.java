@@ -28,6 +28,12 @@ public class JacksonUtils {
         return null;
     }
 
+    /**
+     * @param string
+     * @param classOfT
+     * @param <T>
+     * @return
+     */
     public static <T> T deserialize(String string, Class<T> classOfT) {
         try {
             return MAPPER.readValue(string, classOfT);

@@ -2,10 +2,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
     <context:component-scan base-package="com.mort.*"/>
+
+    <!-- 配置文件引入 必须在resource 下 对应环境下的  dev_config.properties  -->
+    <context:property-placeholder location="classpath*:conf/*.properties"/>
+
+    <util:properties id="mortTestConfigs">
+        <!--<prop key="corgi.keeper.address">${corgi.keeper.address}</prop>-->
+        <!--<prop key="skinny.server.address">${skinny.server.address}</prop>-->
+        <!--<prop key="vaccum.zookeeper.address">${vaccum.zookeeper.address}</prop>-->
+        <!--<prop key="vaccum.zookeeper.session.timeout">${vaccum.zookeeper.session.timeout}</prop>-->
+        <!--<prop key="vaccum.zookeeper.connect.timeout">${vaccum.zookeeper.connect.timeout}</prop>-->
+        <!--<prop key="sequence.config">${sequence.config}</prop>-->
+        <prop key="database.url">${database.url}</prop>
+        <prop key="database.driver">${database.driver}</prop>
+        <prop key="database.user">${database.user}</prop>
+        <prop key="database.password">${database.password}</prop>
+    </util:properties>
 
     <!-- 配置数据源  根据 id="jdbcDataSource" ref 到mybatis jdbc 数据连接-->
     <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -28,7 +45,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="jdbcDataSource" />
         <property name="configLocation" value="classpath:conf/MyBatisConfiguration.xml" />
-        <property name="mapperLocations" value="classpath*:mapperxml/*Mapper.xml" />
+        <property name="mapperLocations" value="classpath*:mapperxml/*.xml" />
         <!--<property name="typeAliasesPackage" value="${mybatis.alias.basepackage}" />-->
     </bean>
 

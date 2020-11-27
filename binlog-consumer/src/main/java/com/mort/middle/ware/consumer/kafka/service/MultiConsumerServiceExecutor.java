@@ -54,30 +54,31 @@ public class MultiConsumerServiceExecutor implements InitializingBean {
                         consumer.assign(Arrays.asList(new TopicPartition(consumerService.getTopic(), PARTITION_ID)));
                     }
 
+                    loop:
                     while (true) {
                         try {
                             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
                             for (ConsumerRecord<String, String> record : records) {
-
-
+                                //TODO 多线程消费考虑 考虑消息ack问题 只能保证接收一次
+                                //好的实现方式 业务方自己批量接收消息 自己实现多线程消费
                                 executorService.submit(() -> {
-                                    Transaction transaction = Cat.newTransaction("MQ_CONSUMER", consumerService.getTopic() + ":" + consumerService.getGroup());
+                                            Transaction transaction = Cat.newTransaction("MQ_CONSUMER", consumerService.getTopic() + ":" + consumerService.getGroup());
 
-                                    try {
-                                        consumerService.consumer(record);
+                                            try {
+                                                consumerService.consumer(record);
+                                                transaction.setStatus("0");
+                                                //TODO 多线程消费考虑 考虑消息ack问题 只能保证接收一次
+                                                Map<TopicPartition, OffsetAndMetadata> commitInfo = new HashMap<>();
+                                                commitInfo.put(new TopicPartition(consumerService.getTopic(), record.partition()), new OffsetAndMetadata(record.offset()));
+                                                consumer.commitSync(commitInfo);
 
-                                        transaction.setStatus("0");
-                                        Map<TopicPartition, OffsetAndMetadata> commitInfo = new HashMap<>();
-                                        commitInfo.put(new TopicPartition(consumerService.getTopic(), record.partition()), new OffsetAndMetadata(record.offset()));
-                                        consumer.commitSync(commitInfo);
-
-                                    } catch (Throwable throwable) {
-                                        logger.error("", throwable);
-                                        transaction.setStatus(throwable);
-                                    } finally {
-                                        transaction.complete();
-                                    }
-                                }
+                                            } catch (Throwable throwable) {
+                                                logger.error("", throwable);
+                                                transaction.setStatus(throwable);
+                                            } finally {
+                                                transaction.complete();
+                                            }
+                                        }
                                 );
 
                             }

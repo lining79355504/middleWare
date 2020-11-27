@@ -1,4 +1,5 @@
 package com.mort.middleWare.configCenter.client.request;
 
-public class ZKClient {
+public class ZKClient implements Client{
+
 }
