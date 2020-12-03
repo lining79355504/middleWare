@@ -17,7 +17,7 @@
 
 
 
-    <context:component-scan base-package="com.mort.demo.controller"/>
+    <context:component-scan base-package="com.mort"/>
 
 
 
