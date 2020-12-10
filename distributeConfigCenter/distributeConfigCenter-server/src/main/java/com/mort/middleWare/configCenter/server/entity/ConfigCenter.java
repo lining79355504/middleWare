@@ -7,7 +7,7 @@ import java.util.Date;
  * @Description
  * @date 2020/11/24
  **/
-public class ConfigEnter {
+public class ConfigCenter {
     private Integer id;
 
     /**

@@ -17,6 +17,13 @@ public class ConfigParamsDto implements Serializable {
 
     private String value ;
 
+    private String lastRefreshTime;
+
+    /**
+     * 上次更新的最大ID  client 以此作为更新对比 避免aba问题
+     */
+    private String xid;
+
     private String valueTypeClass;
 
     public String getApp() {

@@ -1,6 +1,6 @@
 package com.mort.middleWare.configCenter.server.mapper;
 
-import com.mort.middleWare.configCenter.server.entity.ConfigEnter;
+import com.mort.middleWare.configCenter.server.entity.ConfigCenter;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,21 +12,21 @@ import org.apache.ibatis.annotations.Param;
 public interface ConfigEnterMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(ConfigEnter record);
+    int insert(ConfigCenter record);
 
-    int insertOrUpdate(ConfigEnter record);
+    int insertOrUpdate(ConfigCenter record);
 
-    int insertOrUpdateSelective(ConfigEnter record);
+    int insertOrUpdateSelective(ConfigCenter record);
 
-    int insertSelective(ConfigEnter record);
+    int insertSelective(ConfigCenter record);
 
-    ConfigEnter selectByPrimaryKey(Integer id);
+    ConfigCenter selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(ConfigEnter record);
+    int updateByPrimaryKeySelective(ConfigCenter record);
 
-    int updateByPrimaryKey(ConfigEnter record);
+    int updateByPrimaryKey(ConfigCenter record);
 
-    int updateBatch(List<ConfigEnter> list);
+    int updateBatch(List<ConfigCenter> list);
 
-    int batchInsert(@Param("list") List<ConfigEnter> list);
+    int batchInsert(@Param("list") List<ConfigCenter> list);
 }

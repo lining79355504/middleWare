@@ -8,6 +8,4 @@ public interface ConsumerService {
 
     String getGroup();
 
-    void consumer(ConsumerRecord<String, String> record) throws Throwable;
-
 }
