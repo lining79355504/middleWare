@@ -22,4 +22,6 @@ public interface StoreService {
 
     String getType();
 
+    String getAll(String appkey);
+
 }

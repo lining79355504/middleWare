@@ -1,17 +1,17 @@
-package com.mort.middleWare.configCenter.server.request;
+package com.mort.middleWare.configCenter.server.controller;
 
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.mort.middleWare.configCenter.client.DConfig;
-import com.mort.middleWare.configCenter.client.service.MemoryCache;
 import com.mort.middleWare.configCenter.server.dto.ConfigParamsDto;
 import com.mort.middleWare.configCenter.server.entity.ConfigCenter;
 import com.mort.middleWare.configCenter.server.service.StoreRefreshService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,8 +19,15 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
+
+
+/**
+ *
+ * 开始时的配置初始化
+ * 
+ */
 
 @Controller
 @RequestMapping("/polling/")
@@ -28,6 +35,7 @@ public class HttpServer {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpServer.class);
 
+    //binlog
     @Resource
     private StoreRefreshService storeRefreshService;
 
@@ -64,7 +72,14 @@ public class HttpServer {
 //        watchRequests.put(paramsDto.getApp(), deferredResult);
         logger.info("Servlet thread released");
 
-        deferredResult.setResult(refreshQueue.poll());
+        List<ConfigCenter> poll = null;
+        try {
+            poll = refreshQueue.poll(30000L, TimeUnit.MILLISECONDS);
+        } catch (Exception e) {
+            logger.error("", e);
+        }
+
+        deferredResult.setResult(poll);
         return deferredResult;
     }
 

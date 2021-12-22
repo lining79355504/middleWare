@@ -1,6 +1,9 @@
 package com.mort.middle.ware.consumer.kafka.entity;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.gson.reflect.TypeToken;
 import com.mort.middle.ware.consumer.kafka.enums.CanalBinlogSqlTypeEnum;
+import com.mort.middle.ware.consumer.utils.JacksonUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,13 +12,20 @@ public class CanalBinlogEntity<V> implements Serializable {
 
     private static final long serialVersionUID = -4507273519960819614L;
 
+    //DCL DML 的时候为 null
     private List<V> data;
+
+    private String test;
 
     private String database;
 
     private String table;
 
-    private CanalBinlogSqlTypeEnum type;
+//    private CanalBinlogSqlTypeEnum type;
+    /**
+     * 参照 com.mort.middle.ware.consumer.kafka.enums.CanalBinlogSqlTypeEnum
+     */
+    private String type;
 
     private long es;
 
@@ -25,6 +35,7 @@ public class CanalBinlogEntity<V> implements Serializable {
 
     private boolean isDdl;
 
+    //DCL DML 的时候为 null
     private List<V> old;
 
     private List<String> pkNames;
@@ -55,11 +66,11 @@ public class CanalBinlogEntity<V> implements Serializable {
         this.table = table;
     }
 
-    public CanalBinlogSqlTypeEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(CanalBinlogSqlTypeEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -119,13 +130,22 @@ public class CanalBinlogEntity<V> implements Serializable {
         this.sql = sql;
     }
 
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+
     @Override
     public String toString() {
         return "CanalBinlogEntity{" +
                 "data=" + data +
+                ", test='" + test + '\'' +
                 ", database='" + database + '\'' +
                 ", table='" + table + '\'' +
-                ", type=" + type +
+                ", type='" + type + '\'' +
                 ", es=" + es +
                 ", ts=" + ts +
                 ", id=" + id +
@@ -134,5 +154,24 @@ public class CanalBinlogEntity<V> implements Serializable {
                 ", pkNames=" + pkNames +
                 ", sql='" + sql + '\'' +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        String str = "{\n" +
+                "\t\"data\": null,\n" +
+                "\t\"database\": \"test\",\n" +
+                "\t\"es\": 1616770359000,\n" +
+                "\t\"id\": 5,\n" +
+                "\t\"isDdl\": false,\n" +
+                "\t\"mysqlType\": null,\n" +
+                "\t\"old\": null,\n" +
+                "\t\"pkNames\": null,\n" +
+                "\t\"sql\": \"ALTER TABLE `test` ADD `qw` INT\\n NULL\\n DEFAULT NULL\\n AFTER `name`\",\n" +
+                "\t\"sqlType\": null,\n" +
+                "\t\"table\": \"test\",\n" +
+                "\t\"ts\": 1616770360136,\n" +
+                "\t\"type\": \"ALTER\"\n" +
+                "}";
+        JacksonUtils.deserialize(str, new TypeReference<CanalBinlogEntity<String>>(){});
     }
 }

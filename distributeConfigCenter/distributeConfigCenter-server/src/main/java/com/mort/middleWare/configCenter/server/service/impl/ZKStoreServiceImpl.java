@@ -30,4 +30,9 @@ public class ZKStoreServiceImpl implements StoreService {
     public String getType() {
         return "zookeeper";
     }
+
+    @Override
+    public String getAll(String appkey) {
+        return null;
+    }
 }

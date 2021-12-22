@@ -22,6 +22,9 @@
         <module>springboot-getway</module>
         <module>springboot-eureka-server</module>
         <module>open-api</module>
+        <module>rpc</module>
+        <module>rpc-spring-client</module>
+        <module>flow-limit</module>
     </modules>
 
     <properties>

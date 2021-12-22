@@ -58,12 +58,30 @@ public class ConfigParamsDto implements Serializable {
         this.valueTypeClass = valueTypeClass;
     }
 
+    public String getLastRefreshTime() {
+        return lastRefreshTime;
+    }
+
+    public void setLastRefreshTime(String lastRefreshTime) {
+        this.lastRefreshTime = lastRefreshTime;
+    }
+
+    public String getXid() {
+        return xid;
+    }
+
+    public void setXid(String xid) {
+        this.xid = xid;
+    }
+
     @Override
     public String toString() {
         return "ConfigParamsDto{" +
                 "app='" + app + '\'' +
                 ", key='" + key + '\'' +
                 ", value='" + value + '\'' +
+                ", lastRefreshTime='" + lastRefreshTime + '\'' +
+                ", xid='" + xid + '\'' +
                 ", valueTypeClass='" + valueTypeClass + '\'' +
                 '}';
     }

@@ -30,4 +30,11 @@ public class RedisStoreServiceImpl implements StoreService {
     public String getType() {
         return "redis";
     }
+
+    @Override
+    public String getAll(String appkey) {
+        return null;
+    }
+
+
 }

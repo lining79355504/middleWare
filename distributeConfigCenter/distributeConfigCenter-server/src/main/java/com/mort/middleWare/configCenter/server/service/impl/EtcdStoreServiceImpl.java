@@ -32,5 +32,10 @@ public class EtcdStoreServiceImpl implements StoreService {
         return "etcd";
     }
 
+    @Override
+    public String getAll(String appkey) {
+        return null;
+    }
+
 
 }

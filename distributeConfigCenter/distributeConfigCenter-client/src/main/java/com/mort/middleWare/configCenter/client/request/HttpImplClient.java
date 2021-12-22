@@ -7,6 +7,9 @@ public class HttpImplClient implements Client{
     @Override
     public void start() {
 
+
+
+
     }
 
     @Override
